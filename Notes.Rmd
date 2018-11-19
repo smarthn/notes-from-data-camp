@@ -1,0 +1,77 @@
+---
+title: "Data camp assignment"
+output: html_document
+---
+```{r}
+#Introduction 
+  #the data can be interepreted in various ways depending on who is looking at it. It is also important to visualize any outliers and remove them if they have a signficant impact on the data
+
+
+```
+
+```{r}
+#Example on how to make a simple plot 
+#library(ggplot2)
+
+ggplot(mtcars, aes(x = xcoordinates, y = yccoordinates)) +
+  geom_point()
+
+#^Mtcars is the data set, x is the x coordinates found in the data set, and y the y coordiantes. 
+#aes stands for aestetics - which are explained below 
+#make sure the package is installed and loaded before you do anything
+
+```
+
+```{r}
+ggplot(mtcars, aes(x = wt, y = mpg, color = disp)) +
+  geom_point()
+
+#Same code as the above with the added color argument, notice how it goes inside the aes 
+
+```
+
+```{r}
+ggplot(mtcars, aes(x = wt, y = mpg, size = disp)) +
+  geom_point()
+
+#now we have added a size argument which is dependant on the size of the engines in teh mtcars datat (for this example)
+
+```
+
+```{r}
+#it is important to use variables and to understand how to make use of them in code. example : 
+ggplot(mtcars, aes(x = wt, y = mpg, shape = disp)) +
+  geom_point()
+#in the above example, shape = disp , the disp is a variable which can be used for a colour gradient as well size scale. 
+```
+
+```{r}
+#Essential grammer of graphics elements - data , aesthetics(the scale), geometrics (visuals)
+#Aes can be used to clarify color, 
+  #ggplot( x= , y=, color=clarity)
+#make sure that you add () after geom_point, does not work without it even if there are no arguments in the brackets 
+
+```
+
+```{r}
+#Aestetics = axis, shape, color, size, etc
+# use aes() function
+
+#example: ggplot(mtcars, aes(wt, mpg, size = cyl)) + geom_point() < basic scatter plot
+#Important to note that geom_dotplot() is different than geom_point(), the plotting symbol changes! **
+
+## 4 - Define an object for position jitterdodge, to use below - *copied from data camp* - remember this example. 
+#posn.jd <- position_jitterdodge(0.5, 0, 0.6)
+
+
+#in order to deal with overplotting, set position = jitter - do this inside geom_point()
+#overplotting occurs when you have too many plots on the same y coordinate
+#make sure you check the type of data it is, for example objets, integer and so on
+
+#when making histograms, remember that geom_histograms() has the state="bin" set as default 
+#what the above command does is make sure that continous variables are sorted into discrete bins
+#Histogram only requires one aestethic x, and not y. the y value comes from the counts from the bins 
+#Position argument: Stack(default - place the bars on top of each other, fill - place teh bars on top of each other - with proportions. dodge - place the bars next to each other. 
+#to make a graph with colour - scale_fill_brewer(). in order to see all the colours available - ?brewer.pal
+#There will be times when you need to mix and create your own colours - this will be done by using colorRampPalette()
+
